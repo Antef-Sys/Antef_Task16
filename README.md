@@ -32,70 +32,6 @@ project-folder/
     Responsive grid layout
     Modern card design
     Mobile-friendly interface
-   
-🧠 Code Overview
-Student Array
-const students = [
-    {
-        name: "Salman Ahmed",
-        marks: "38%",
-        class: "3rd",
-        address: "India"
-    },
-
-    {
-        name: "Riya Sharma",
-        marks: "85%",
-        class: "10th",
-        address: "Delhi"
-    }
-];
-
-Display Function Using map() 
-
-function displayStudents(studentArray){
-
-    const cards = studentArray.map((student) => {
-
-        return `
-
-            <div class="item">
-
-                <h3>${student.name}</h3>
-
-                <p><span>Marks:</span> ${student.marks}</p>
-
-                <p><span>Class:</span> ${student.class}</p>
-
-                <p><span>Address:</span> ${student.address}</p>
-
-            </div>
-
-        `;
-
-    });
-
-    studentContainer.innerHTML = cards.join("");
-
-}
-
-Search Function Using filter()
-
-searchInput.addEventListener("keyup", () => {
-
-    const searchValue = searchInput.value.toLowerCase();
-
-    const filteredStudents = students.filter((student) => {
-
-        return student.name
-        .toLowerCase()
-        .includes(searchValue);
-
-    });
-
-    displayStudents(filteredStudents);
-
-});
 
 🖥️ Output
     Displays all student cards dynamically
@@ -126,10 +62,3 @@ Flexbox
 
 📌 Author
     Antef Idrisi
-
-⭐ Future Improvements
-    Add student profile images
-    Add dark mode
-    Add sorting functionality
-    Add edit/delete functionality
-    Connect with database/backend
