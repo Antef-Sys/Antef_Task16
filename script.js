@@ -143,59 +143,56 @@ const students = [
 ];
 
 
-// ================= SELECT ELEMENTS =================
+// selecting html elements
 
-const studentContainer = document.getElementById("studentContainer");
+let container = document.getElementById("studentContainer");
+let searchInput = document.getElementById("search-input");
 
-const searchInput = document.getElementById("search-input");
 
+// function to display students
 
-// ================= DISPLAY FUNCTION =================
+function showStudents(data){
 
-function displayStudents(studentArray){
+    // clearing previous data
 
-    const cards = studentArray.map((student) => {
+    container.innerHTML = "";
 
-        return `
+    // using map function to create cards
 
-            <div class="item">
+    data.map(function(student){
 
-                <h3>${student.name}</h3>
+        container.innerHTML += `
 
-                <p><span>Marks:</span> ${student.marks}</p>
-
-                <p><span>Class:</span> ${student.class}</p>
-
-                <p><span>Address:</span> ${student.address}</p>
-
-            </div>
+        <div class="item">
+            <h3>${student.name}</h3>
+            <p>Marks: ${student.marks}</p>
+            <p>Class: ${student.class}</p>
+            <p>Address: ${student.address}</p>
+        </div>
 
         `;
 
     });
 
-    studentContainer.innerHTML = cards.join("");
-
 }
 
+// initially showing all students
+showStudents(students);
+// searching students by name
 
-// ================= INITIAL DISPLAY =================
+searchInput.addEventListener("keyup", function(){
 
-displayStudents(students);
+    let searchText = searchInput.value.toLowerCase();
 
+    // filter function checks matching names
 
-// ================= SEARCH FUNCTION =================
-
-searchInput.addEventListener("keyup", () => {
-
-    const searchValue = searchInput.value.toLowerCase();
-
-    const filteredStudents = students.filter((student) => {
-
-        return student.name.toLowerCase().includes(searchValue);
-
+    let filteredStudents = students.filter(function(student){
+        return student.name
+        .toLowerCase()
+        .includes(searchText);
     });
 
-    displayStudents(filteredStudents);
+    // displaying filtered students
+    showStudents(filteredStudents);
 
 });
